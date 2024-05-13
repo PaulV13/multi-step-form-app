@@ -1,0 +1,39 @@
+type SidebarOptionType = {
+  number: number;
+  title: string;
+  option: string;
+  selectedStepOption: number;
+};
+
+function SidebarOption({
+  selectedStepOption,
+  number,
+  title,
+  option,
+}: SidebarOptionType) {
+  return (
+    <div className="flex items-center gap-4">
+      <div
+        className={`w-6 h-6 flex justify-center items-center rounded-full border border-b-gray-300 ${
+          selectedStepOption == number
+            ? "bg-sky-300 border-sky-300"
+            : "transparent border-white"
+        } `}
+      >
+        <p
+          className={`text-xs font-semibold ${
+            selectedStepOption == number ? "text-black" : "text-white"
+          } `}
+        >
+          {number}
+        </p>
+      </div>
+      <div className="flex flex-col">
+        <p className="text-xs text-gray-400">{title}</p>
+        <p className="text-xs font-bold text-gray-50">{option}</p>
+      </div>
+    </div>
+  );
+}
+
+export default SidebarOption;
