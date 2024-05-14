@@ -30,7 +30,9 @@ function Summary() {
         <section className="flex flex-col rounded-md bg-blue-50 p-4">
           <div className="flex justify-between items-center px-4">
             <div>
-              <h3 className="font-bold text-blue-900 text-sm">{plan.title}</h3>
+              <h3 className="font-bold text-blue-900 text-sm">
+                {plan.title} ({billing})
+              </h3>
               <p
                 onClick={() => setStepOption(2)}
                 className="font-medium text-gray-400 hover:text-purple-400 text-xs underline cursor-pointer"
