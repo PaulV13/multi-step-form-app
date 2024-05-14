@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type SidebarOptionType = {
+export type SidebarOptionType = {
   number: number;
   title: string;
   option: string;

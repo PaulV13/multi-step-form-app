@@ -1,16 +1,13 @@
-type SidebarOptionType = {
-  number: number;
-  title: string;
-  option: string;
-  selectedStepOption: number;
-};
+import { SidebarOptionType } from "../../stores/storeSidebar";
 
 function SidebarOption({
+  step,
   selectedStepOption,
-  number,
-  title,
-  option,
-}: SidebarOptionType) {
+}: {
+  step: SidebarOptionType;
+  selectedStepOption: number;
+}) {
+  const { number, title, option } = step;
   return (
     <div className="flex items-center gap-4">
       <div
