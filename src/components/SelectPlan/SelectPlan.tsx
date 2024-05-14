@@ -41,14 +41,7 @@ function SelectPlan() {
 
         <section className="flex justify-between gap-4">
           {plans.map((plan) => (
-            <CardPlan
-              key={plan.id}
-              id={plan.id}
-              title={plan.title}
-              price={plan.price}
-              logo={plan.logo}
-              monthFree={plan.monthFree}
-            />
+            <CardPlan key={plan.id} plan={plan} />
           ))}
         </section>
         <ToggleBilling setBilling={handleBilling} billing={billing} />

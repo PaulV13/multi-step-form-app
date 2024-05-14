@@ -1,14 +1,20 @@
+import { usePickAddOns } from "../../stores/storePickAddOns";
+
 type ToggleBillingProps = {
   billing: string;
   setBilling: (checked: boolean) => void;
 };
 
 function ToggleBilling({ setBilling, billing }: ToggleBillingProps) {
+  const updatePriceAddOns = usePickAddOns((state) => state.updatePriceAddOns);
+
   const onBilling = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
       setBilling(true);
+      updatePriceAddOns(true);
     } else {
       setBilling(false);
+      updatePriceAddOns(false);
     }
   };
 

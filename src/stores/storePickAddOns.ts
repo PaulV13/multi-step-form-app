@@ -15,6 +15,7 @@ type StatePickAddOns = {
 type ActionsPickAddOns = {
   setAddOns: (payload: AddOns) => void;
   deleteAddOns: (payload: AddOns) => void;
+  updatePriceAddOns: (checked: boolean) => void;
 };
 
 const addOns: AddOns[] = [
@@ -49,6 +50,13 @@ export const usePickAddOns = create<StatePickAddOns & ActionsPickAddOns>(
         selectedAddOns: state.selectedAddOns.filter(
           (addOn) => addOn.id !== payload.id
         ),
+      })),
+    updatePriceAddOns: (checked: boolean) =>
+      set((state) => ({
+        selectedAddOns: state.selectedAddOns.map((addOn) => ({
+          ...addOn,
+          price: checked ? addOn.price * 10 : addOn.price / 10,
+        })),
       })),
   })
 );

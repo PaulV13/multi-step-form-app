@@ -1,6 +1,6 @@
 import { CardPlanType, useSelectPlan } from "../../stores/storeSelectPlan";
 
-function CardPlan(plan: CardPlanType) {
+function CardPlan({ plan }: { plan: CardPlanType }) {
   const { id, title, price, logo } = plan;
 
   const setSelectedPlan = useSelectPlan((state) => state.setSelectedPlan);

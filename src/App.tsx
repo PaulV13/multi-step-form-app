@@ -9,6 +9,8 @@ import SelectPlan from "./components/SelectPlan/SelectPlan";
 import "./index.css";
 import PickAddOns from "./components/PickAddOns/PickAddOns";
 import { usePickAddOns } from "./stores/storePickAddOns";
+import Summary from "./components/Summary/Summary";
+import { useSummary } from "./stores/storeSummary";
 
 type SidebarOptionType = {
   number: number;
@@ -25,9 +27,7 @@ function showStep(step: number) {
     case 3:
       return <PickAddOns />;
     case 4:
-      return <h1>Summary</h1>;
-    case 5:
-      return <h1>5555</h1>;
+      return <Summary />;
     default:
       return <PersonalInfo />;
   }
@@ -40,6 +40,7 @@ function App() {
   const plan = useSelectPlan((state) => state.selectedPlan);
   const billingPlan = useSelectPlan((state) => state.billingPlan);
   const addons = usePickAddOns((state) => state.selectedAddOns);
+  const total = useSummary((state) => state.total);
 
   const steps: SidebarOptionType[] = [
     { number: 1, title: "STEP 1", option: "YOUR INFO" },
@@ -70,6 +71,7 @@ function App() {
     console.log("Plan: ", plan);
     console.log("Billing plan: ", billingPlan);
     console.log("Add-ons: ", addons);
+    console.log("Total: ", total);
   };
 
   return (
@@ -83,7 +85,7 @@ function App() {
 
           <div className="flex w-full justify-between px-12">
             <button
-              className={`w-24 px-4 py-3 font-bold text-gray-200 hover:text-blue-800 text-sm ${
+              className={`w-24 px-4 py-2 font-bold text-gray-400 hover:text-blue-800 text-sm ${
                 selectedStepOption > 1 ? "visible" : "invisible"
               }`}
               onClick={handleBackStep}
@@ -92,14 +94,14 @@ function App() {
             </button>
             {selectedStepOption === steps.length ? (
               <button
-                className="w-24 px-4 py-3 bg-purple-700 rounded-md text-gray-200 text-sm"
+                className="w-24 px-4 py-2 bg-blue-700 hover:bg-purple-500 rounded-md text-gray-200 text-sm"
                 onClick={handleConfirm}
               >
                 Confirm
               </button>
             ) : (
               <button
-                className="w-24 px-4 py-3 bg-blue-950 hover:bg-blue-800 rounded-md text-gray-200 text-sm"
+                className="w-24 px-4 py-2 bg-blue-950 hover:bg-blue-800 rounded-md text-gray-200 text-sm"
                 onClick={handleNextStep}
               >
                 Next Step

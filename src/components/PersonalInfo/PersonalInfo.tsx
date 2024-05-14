@@ -5,6 +5,10 @@ function PersonalInfo() {
   const updateEmail = usePersonalInfo((state) => state.updateEmail);
   const updatePhone = usePersonalInfo((state) => state.updatePhone);
 
+  const name = usePersonalInfo((state) => state.name);
+  const email = usePersonalInfo((state) => state.email);
+  const phone = usePersonalInfo((state) => state.phone);
+
   return (
     <>
       <div className="mb-6">
@@ -24,6 +28,7 @@ function PersonalInfo() {
           type="text"
           id="name"
           name="name"
+          value={name}
           autoComplete="given-name"
         />
 
@@ -36,6 +41,7 @@ function PersonalInfo() {
           type="email"
           id="email"
           name="email"
+          value={email}
           autoComplete="email"
         />
 
@@ -48,6 +54,7 @@ function PersonalInfo() {
           type="tel"
           id="phone"
           name="phone"
+          value={phone}
           placeholder="e.g. +1 234 567 890"
           autoComplete="tel"
         />
