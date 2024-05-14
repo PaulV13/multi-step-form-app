@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { usePersonalInfo } from "./stores/storePersonalInfo";
 import { useSelectPlan } from "./stores/storeSelectPlan";
 
@@ -11,12 +10,7 @@ import PickAddOns from "./components/PickAddOns/PickAddOns";
 import { usePickAddOns } from "./stores/storePickAddOns";
 import Summary from "./components/Summary/Summary";
 import { useSummary } from "./stores/storeSummary";
-
-type SidebarOptionType = {
-  number: number;
-  title: string;
-  option: string;
-};
+import { useSidebar } from "./stores/storeSidebar";
 
 function showStep(step: number) {
   switch (step) {
@@ -42,25 +36,11 @@ function App() {
   const addons = usePickAddOns((state) => state.selectedAddOns);
   const total = useSummary((state) => state.total);
 
-  const steps: SidebarOptionType[] = [
-    { number: 1, title: "STEP 1", option: "YOUR INFO" },
-    { number: 2, title: "STEP 2", option: "SELECT PLAN" },
-    { number: 3, title: "STEP 3", option: "ADD-ONS" },
-    { number: 4, title: "STEP 4", option: "SUMMARY" },
-  ];
-  const [selectedStepOption, setSelectedStepOption] = useState(1);
+  const handleBackStep = useSidebar((state) => state.handleBackStep);
+  const handleNextStep = useSidebar((state) => state.handleNextStep);
 
-  const handleNextStep = () => {
-    if (selectedStepOption < steps.length) {
-      setSelectedStepOption(selectedStepOption + 1);
-    }
-  };
-
-  const handleBackStep = () => {
-    if (selectedStepOption > 1) {
-      setSelectedStepOption(selectedStepOption - 1);
-    }
-  };
+  const selectedStepOption = useSidebar((state) => state.selectedStepOption);
+  const steps = useSidebar((state) => state.steps);
 
   const handleConfirm = () => {
     console.log("Confirmed");

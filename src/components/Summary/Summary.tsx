@@ -2,12 +2,14 @@ import { useEffect } from "react";
 import { usePickAddOns } from "../../stores/storePickAddOns";
 import { useSelectPlan } from "../../stores/storeSelectPlan";
 import { useSummary } from "../../stores/storeSummary";
+import { useSidebar } from "../../stores/storeSidebar";
 
 function Summary() {
   const billing = useSelectPlan((state) => state.billingPlan);
   const selectedAddOns = usePickAddOns((state) => state.selectedAddOns);
   const plan = useSelectPlan((state) => state.selectedPlan);
   const setTotal = useSummary((state) => state.setTotal);
+  const setStepOption = useSidebar((state) => state.handleSetStep);
 
   const total = selectedAddOns.reduce(
     (acc, addOn) => acc + addOn.price,
@@ -29,7 +31,10 @@ function Summary() {
           <div className="flex justify-between items-center px-4">
             <div>
               <h3 className="font-bold text-blue-900 text-sm">{plan.title}</h3>
-              <p className="font-medium text-gray-400 hover:text-purple-400 text-xs underline cursor-pointer">
+              <p
+                onClick={() => setStepOption(2)}
+                className="font-medium text-gray-400 hover:text-purple-400 text-xs underline cursor-pointer"
+              >
                 Change
               </p>
             </div>
