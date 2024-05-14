@@ -24,6 +24,7 @@ function PersonalInfo() {
           type="text"
           id="name"
           name="name"
+          autoComplete="given-name"
         />
 
         <label className="font-semibold text-sm mb-2" htmlFor="email">
@@ -35,6 +36,7 @@ function PersonalInfo() {
           type="email"
           id="email"
           name="email"
+          autoComplete="email"
         />
 
         <label className="font-semibold text-sm mb-2" htmlFor="phone">
@@ -47,6 +49,7 @@ function PersonalInfo() {
           id="phone"
           name="phone"
           placeholder="e.g. +1 234 567 890"
+          autoComplete="tel"
         />
       </form>
     </>

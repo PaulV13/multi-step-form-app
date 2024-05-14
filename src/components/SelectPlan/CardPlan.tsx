@@ -1,13 +1,8 @@
 import { CardPlanType, useSelectPlan } from "../../stores/storeSelectPlan";
 
-function CardPlan({ id, title, price, logo, monthFree }: CardPlanType) {
-  const plan = {
-    id,
-    title,
-    price,
-    logo,
-    monthFree,
-  };
+function CardPlan(plan: CardPlanType) {
+  const { id, title, price, logo } = plan;
+
   const setSelectedPlan = useSelectPlan((state) => state.setSelectedPlan);
   const selectedPlan = useSelectPlan((state) => state.selectedPlan);
   const billing = useSelectPlan((state) => state.billingPlan);

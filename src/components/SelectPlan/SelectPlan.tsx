@@ -20,6 +20,12 @@ function SelectPlan() {
       setSelectedPlan(newPlan);
     } else {
       setBilling("Monthly");
+      const newPlan = {
+        ...selectedPlan,
+        price: selectedPlan.price / 10,
+        monthFree: 0,
+      };
+      setSelectedPlan(newPlan);
     }
   };
 

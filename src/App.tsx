@@ -7,6 +7,8 @@ import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
 import SelectPlan from "./components/SelectPlan/SelectPlan";
 
 import "./index.css";
+import PickAddOns from "./components/PickAddOns/PickAddOns";
+import { usePickAddOns } from "./stores/storePickAddOns";
 
 type SidebarOptionType = {
   number: number;
@@ -21,7 +23,7 @@ function showStep(step: number) {
     case 2:
       return <SelectPlan />;
     case 3:
-      return <h1>Add-ons</h1>;
+      return <PickAddOns />;
     case 4:
       return <h1>Summary</h1>;
     case 5:
@@ -37,6 +39,7 @@ function App() {
   const phone = usePersonalInfo((state) => state.phone);
   const plan = useSelectPlan((state) => state.selectedPlan);
   const billingPlan = useSelectPlan((state) => state.billingPlan);
+  const addons = usePickAddOns((state) => state.selectedAddOns);
 
   const steps: SidebarOptionType[] = [
     { number: 1, title: "STEP 1", option: "YOUR INFO" },
@@ -66,6 +69,7 @@ function App() {
     console.log("Phone: ", phone);
     console.log("Plan: ", plan);
     console.log("Billing plan: ", billingPlan);
+    console.log("Add-ons: ", addons);
   };
 
   return (
