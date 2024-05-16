@@ -31,15 +31,15 @@ function SelectPlan() {
 
   return (
     <>
-      <section className="flex flex-col gap-8">
+      <section className="flex flex-col gap-4 md:gap-8">
         <div>
           <h2 className="font-bold text-blue-950 text-3xl">Select your plan</h2>
-          <p className="text-gray-400 text-sm my-1">
+          <p className="text-gray-400 my-1">
             You have the option of monthly or yearly billing.
           </p>
         </div>
 
-        <section className="flex justify-between gap-4">
+        <section className="flex flex-col justify-between gap-3 md:flex-row md:gap-6">
           {plans.map((plan) => (
             <CardPlan key={plan.id} plan={plan} />
           ))}

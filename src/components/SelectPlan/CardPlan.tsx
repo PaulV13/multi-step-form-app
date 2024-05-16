@@ -10,19 +10,17 @@ function CardPlan({ plan }: { plan: CardPlanType }) {
   return (
     <div
       onClick={() => setSelectedPlan(plan)}
-      className={`flex flex-col flex-1 gap-8 justify-between ${
+      className={`flex gap-3 ${
         selectedPlan.id == id
           ? "bg-blue-50 border-blue-800"
           : "bg-transparent border-gray-300"
-      } p-2 border-2 rounded-md`}
+      } p-2 border rounded-md md:flex-col md:flex-1 md:p-4 md:gap-8`}
     >
-      <div>
-        <img width={24} height={24} src={logo} />
-      </div>
+      <img src={logo} className="md:w-[32px]" />
 
       <div>
-        <h2 className="text-xs text-blue-900 font-bold">{title}</h2>
-        <p className="text-xs text-gray-400">
+        <h2 className="text-blue-900 font-bold">{title}</h2>
+        <p className="text-gray-400">
           ${billing === "Monthly" ? price + "/mo" : price * 10 + "/yr"}
         </p>
         {billing === "Yearly" && (

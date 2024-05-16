@@ -6,12 +6,12 @@ function PickAddOns() {
   const selectedAddons = usePickAddOns((state) => state.selectedAddOns);
 
   return (
-    <div>
-      <h2 className="font-bold text-blue-950 text-3xl">Pick add-ons</h2>
-      <p className="text-gray-400 text-sm my-1">
+    <section className="flex flex-col gap-3 md:mx-8">
+      <h2 className="font-bold text-blue-950 text-2xl">Pick add-ons</h2>
+      <p className="text-gray-400">
         Add-ons help enhance your gaming expirience.
       </p>
-      <section className="flex flex-col gap-4">
+      <section className="flex flex-col gap-3 md:gap-4">
         {addons.map((addon: AddOns) => (
           <PickAddCard
             key={addon.id}
@@ -22,7 +22,7 @@ function PickAddOns() {
           />
         ))}
       </section>
-    </div>
+    </section>
   );
 }
 

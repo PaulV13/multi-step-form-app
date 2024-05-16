@@ -14,7 +14,9 @@ function PickAddCard({
   const addPickAddOn = usePickAddOns((state) => state.setAddOns);
   const deleteAddOn = usePickAddOns((state) => state.deleteAddOns);
 
-  const handleChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChecked = () => {};
+
+  const pickAddOnSelected = () => {
     const newAddOns: AddOns = {
       id: id,
       name: name,
@@ -22,10 +24,10 @@ function PickAddCard({
       price: billingPlan === "Monthly" ? price : price * 10,
     };
 
-    if (e.target.checked === false) {
-      deleteAddOn(newAddOns);
-    } else {
+    if (!selected) {
       addPickAddOn(newAddOns);
+    } else {
+      deleteAddOn(addOns);
     }
   };
 
@@ -33,20 +35,22 @@ function PickAddCard({
     <div
       className={`flex justify-between items-center gap-4 border border-blue-900 rounded-md p-2 ${
         selected ? "bg-blue-50" : "bg-transparent"
-      }`}
+      } cursor-pointer md:p-4`}
+      onClick={pickAddOnSelected}
     >
       <input
-        onChange={(e) => handleChecked(e)}
+        onClick={handleChecked}
         id={id.toString()}
         type="checkbox"
         checked={selected}
-        className="w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        readOnly
+        className="z-20 w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
       />
-      <div className="ml-2 flex-1">
-        <h3 className="font-bold text-blue-950 text-lg">{name}</h3>
-        <p className="text-gray-400 text-sm">{description}</p>
+      <div className="flex-1">
+        <h3 className="font-bold text-blue-950">{name}</h3>
+        <p className="text-gray-400 text-xs">{description}</p>
       </div>
-      <p className="text-gray-400 text-sm">
+      <p className="text-purple-800 font-semibold text-xs">
         +${billingPlan === "Monthly" ? price : price * 10}
         {billingPlan === "Monthly" ? "/mo" : "/yr"}
       </p>

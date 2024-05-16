@@ -10,7 +10,9 @@ import PersonalInfo from "./components/PersonalInfo/PersonalInfo";
 import SelectPlan from "./components/SelectPlan/SelectPlan";
 import PickAddOns from "./components/PickAddOns/PickAddOns";
 import Summary from "./components/Summary/Summary";
+import Confirm from "./components/Confirm/Confirm";
 
+import bgMobile from "./assets/images/bg-sidebar-mobile.svg";
 import checkMark from "./assets/images/icon-thank-you.svg";
 
 import "./index.css";
@@ -58,30 +60,28 @@ function App() {
   };
 
   return (
-    <div className="w-screen h-screen flex justify-center items-center bg-slate-400">
-      <section className="flex w-[860px] p-4 rounded-md bg-white shadow-md">
+    <div className="w-screen h-screen bg-slate-400 md:flex md:justify-center md:items-center">
+      <img
+        src={bgMobile}
+        alt="Check mark"
+        className="absolute w-full top-0 z-10 md:hidden"
+      />
+      <section className="relative h-full z-20 md:flex md:bg-white md:rounded-md md:p-4 md:h-[580px] md:w-[60%] md:max-w-[860px]">
         <Sidebar selectedStepOption={selectedStepOption} steps={steps} />
-        {confirm ? (
-          <div className="flex flex-1 flex-col h-[568px] justify-center items-center p-4">
-            <div className="w-full px-12 py-4">
-              <div className="flex flex-col items-center gap-4">
-                <img src={checkMark} alt="Check mark" />
-                <h1 className="text-3xl font-bold text-blue-950">Thank you!</h1>
-                <p className="text-gray-400 text-center text-sm">
-                  Thanks for confirming your subscription! We hope you have fun
-                  using our plataform. If you ever need support, please feel
-                  free to email us at support@loremgaming.com.
-                </p>
-              </div>
-            </div>
+        <div
+          className={`rounded-md bg-white py-6 px-6 mx-4 md:flex-1 md:flex md:flex-col ${
+            confirm ? "justify-center" : "justify-between"
+          }`}
+        >
+          <div className="flex flex-col bg-white rounded-md">
+            {confirm ? (
+              <Confirm checkMark={checkMark} />
+            ) : (
+              showStep(selectedStepOption)
+            )}
           </div>
-        ) : (
-          <div className="flex flex-1 flex-col justify-between p-4">
-            <div className="w-full px-12 py-4">
-              {showStep(selectedStepOption)}
-            </div>
-
-            <div className="flex w-full justify-between px-12">
+          {confirm ? null : (
+            <footer className="absolute bottom-0 left-0 w-full flex justify-between p-4 bg-white md:relative md:p-0">
               <button
                 className={`w-24 px-4 py-2 font-bold text-gray-400 hover:text-blue-800 text-sm ${
                   selectedStepOption > 1 ? "visible" : "invisible"
@@ -105,9 +105,9 @@ function App() {
                   Next Step
                 </button>
               )}
-            </div>
-          </div>
-        )}
+            </footer>
+          )}
+        </div>
       </section>
     </div>
   );

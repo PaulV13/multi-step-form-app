@@ -10,13 +10,11 @@ function PersonalInfo() {
   const phone = usePersonalInfo((state) => state.phone);
 
   return (
-    <>
-      <div className="mb-6">
-        <h2 className="text-3xl font-bold my-1">Personal info</h2>
-        <p className="text-gray-400 text-sm my-1">
-          Please provide your name, email address, and phone number.
-        </p>
-      </div>
+    <section className="flex flex-col gap-2">
+      <h2 className="text-3xl font-bold my-1">Personal info</h2>
+      <p className="text-gray-400 text-sm my-1">
+        Please provide your name, email address, and phone number.
+      </p>
 
       <form className="flex flex-col">
         <label className="font-semibold text-sm mb-2" htmlFor="name">
@@ -59,7 +57,7 @@ function PersonalInfo() {
           autoComplete="tel"
         />
       </form>
-    </>
+    </section>
   );
 }
 
