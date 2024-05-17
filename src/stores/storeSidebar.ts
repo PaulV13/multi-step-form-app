@@ -27,13 +27,14 @@ const steps: SidebarOptionType[] = [
 export const useSidebar = create<StateSidebar & ActionsSidebar>((set) => ({
   selectedStepOption: 1,
   steps,
-  handleNextStep: () =>
+  handleNextStep: () => {
     set((state) => ({
       selectedStepOption:
         state.selectedStepOption < state.steps.length
           ? state.selectedStepOption + 1
           : state.selectedStepOption,
-    })),
+    }));
+  },
   handleBackStep: () =>
     set((state) => ({
       selectedStepOption:

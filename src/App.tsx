@@ -82,7 +82,9 @@ function App() {
             )}
           </div>
           {confirm ? null : (
-            <footer className="absolute bottom-0 left-0 flex w-full justify-between bg-white p-4 md:relative md:p-0">
+            <footer
+              className={`absolute bottom-0 left-0 flex w-full justify-between bg-white p-4 md:relative md:p-0 ${selectedStepOption > 1 ? "block" : "hidden"}`}
+            >
               <Button
                 title="Go Back"
                 styles={`w-24 px-4 py-2 text-sm font-bold text-gray-400 hover:text-blue-800 ${selectedStepOption > 1 ? "visible" : "invisible"}`}

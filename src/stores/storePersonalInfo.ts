@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-type StatePersonalInfo = {
+export type StatePersonalInfo = {
   name: string;
   email: string;
   phone: string;
