@@ -11,6 +11,7 @@ import SelectPlan from "./components/SelectPlan/SelectPlan";
 import PickAddOns from "./components/PickAddOns/PickAddOns";
 import Summary from "./components/Summary/Summary";
 import Confirm from "./components/Confirm/Confirm";
+import Button from "./components/Button/Button";
 
 import bgMobile from "./assets/images/bg-sidebar-mobile.svg";
 import checkMark from "./assets/images/icon-thank-you.svg";
@@ -82,28 +83,23 @@ function App() {
           </div>
           {confirm ? null : (
             <footer className="absolute bottom-0 left-0 flex w-full justify-between bg-white p-4 md:relative md:p-0">
-              <button
-                className={`w-24 px-4 py-2 text-sm font-bold text-gray-400 hover:text-blue-800 ${
-                  selectedStepOption > 1 ? "visible" : "invisible"
-                }`}
-                onClick={handleBackStep}
-              >
-                Go Back
-              </button>
+              <Button
+                title="Go Back"
+                styles={`w-24 px-4 py-2 text-sm font-bold text-gray-400 hover:text-blue-800 ${selectedStepOption > 1 ? "visible" : "invisible"}`}
+                handleAction={handleBackStep}
+              />
               {selectedStepOption === steps.length ? (
-                <button
-                  className="w-24 rounded-md bg-blue-700 px-4 py-2 text-sm text-gray-200 hover:bg-purple-500"
-                  onClick={handleConfirm}
-                >
-                  Confirm
-                </button>
+                <Button
+                  title="Confirm"
+                  styles="w-24 rounded-md bg-blue-700 px-4 py-2 text-sm text-gray-200 hover:bg-purple-500"
+                  handleAction={handleConfirm}
+                />
               ) : (
-                <button
-                  className="w-24 rounded-md bg-blue-950 px-4 py-2 text-sm text-gray-200 hover:bg-blue-800"
-                  onClick={handleNextStep}
-                >
-                  Next Step
-                </button>
+                <Button
+                  title="Next Step"
+                  styles="w-24 rounded-md bg-blue-950 px-4 py-2 text-sm text-gray-200 hover:bg-blue-800"
+                  handleAction={handleNextStep}
+                />
               )}
             </footer>
           )}
