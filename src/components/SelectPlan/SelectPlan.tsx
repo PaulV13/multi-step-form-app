@@ -4,30 +4,6 @@ import { useSelectPlan } from "../../stores/storeSelectPlan";
 
 function SelectPlan() {
   const plans = useSelectPlan((state) => state.plans);
-  const selectedPlan = useSelectPlan((state) => state.selectedPlan);
-  const setSelectedPlan = useSelectPlan((state) => state.setSelectedPlan);
-  const billing = useSelectPlan((state) => state.billingPlan);
-  const setBilling = useSelectPlan((state) => state.setBillingPlan);
-
-  const handleBilling = (checked: boolean) => {
-    if (checked) {
-      setBilling("Yearly");
-      const newPlan = {
-        ...selectedPlan,
-        price: selectedPlan.price * 10,
-        monthFree: 2,
-      };
-      setSelectedPlan(newPlan);
-    } else {
-      setBilling("Monthly");
-      const newPlan = {
-        ...selectedPlan,
-        price: selectedPlan.price / 10,
-        monthFree: 0,
-      };
-      setSelectedPlan(newPlan);
-    }
-  };
 
   return (
     <>
@@ -44,7 +20,7 @@ function SelectPlan() {
             <CardPlan key={plan.id} plan={plan} />
           ))}
         </section>
-        <ToggleBilling setBilling={handleBilling} billing={billing} />
+        <ToggleBilling />
       </section>
     </>
   );

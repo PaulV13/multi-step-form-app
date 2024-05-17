@@ -7,9 +7,22 @@ function CardPlan({ plan }: { plan: CardPlanType }) {
   const selectedPlan = useSelectPlan((state) => state.selectedPlan);
   const billing = useSelectPlan((state) => state.billingPlan);
 
+  const onSelectPlan = (plan: CardPlanType) => {
+    if (billing === "Yearly") {
+      const newPlan = {
+        ...plan,
+        price: plan.price * 10,
+        monthFree: 2,
+      };
+      setSelectedPlan(newPlan);
+      return;
+    }
+    setSelectedPlan(plan);
+  };
+
   return (
     <div
-      onClick={() => setSelectedPlan(plan)}
+      onClick={() => onSelectPlan(plan)}
       className={`flex gap-3 ${
         selectedPlan.id == id
           ? "border-blue-800 bg-blue-50"

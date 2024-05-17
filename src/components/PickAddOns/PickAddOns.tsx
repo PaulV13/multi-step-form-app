@@ -6,7 +6,7 @@ function PickAddOns() {
   const selectedAddons = usePickAddOns((state) => state.selectedAddOns);
 
   return (
-    <section className="flex flex-col gap-3 md:mx-8">
+    <section className="flex flex-col gap-3">
       <h2 className="text-2xl font-bold text-blue-950">Pick add-ons</h2>
       <p className="text-gray-400">
         Add-ons help enhance your gaming expirience.

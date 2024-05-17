@@ -67,7 +67,7 @@ function App() {
         alt="Check mark"
         className="absolute top-0 z-10 w-full md:hidden"
       />
-      <section className="relative z-20 h-full md:flex md:h-[580px] md:w-[60%] md:max-w-[860px] md:rounded-md md:bg-white md:p-4">
+      <section className="relative z-20 h-full md:flex md:h-[580px] md:w-[80%] md:max-w-[860px] md:rounded-md md:bg-white md:p-4">
         <Sidebar selectedStepOption={selectedStepOption} steps={steps} />
         <div
           className={`mx-4 rounded-md bg-white px-6 py-6 md:flex md:flex-1 md:flex-col ${

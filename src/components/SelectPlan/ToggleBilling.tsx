@@ -1,19 +1,31 @@
 import { usePickAddOns } from "../../stores/storePickAddOns";
+import { useSelectPlan } from "../../stores/storeSelectPlan";
 
-type ToggleBillingProps = {
-  billing: string;
-  setBilling: (checked: boolean) => void;
-};
-
-function ToggleBilling({ setBilling, billing }: ToggleBillingProps) {
+function ToggleBilling() {
   const updatePriceAddOns = usePickAddOns((state) => state.updatePriceAddOns);
+  const setBilling = useSelectPlan((state) => state.setBillingPlan);
+  const billing = useSelectPlan((state) => state.billingPlan);
+  const selectedPlan = useSelectPlan((state) => state.selectedPlan);
+  const setSelectedPlan = useSelectPlan((state) => state.setSelectedPlan);
 
-  const onBilling = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeBilling = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.checked) {
-      setBilling(true);
+      setBilling("Yearly");
+      const newPlan = {
+        ...selectedPlan,
+        price: selectedPlan.price * 10,
+        monthFree: 2,
+      };
+      setSelectedPlan(newPlan);
       updatePriceAddOns(true);
     } else {
-      setBilling(false);
+      setBilling("Monthly");
+      const newPlan = {
+        ...selectedPlan,
+        price: selectedPlan.price / 10,
+        monthFree: 0,
+      };
+      setSelectedPlan(newPlan);
       updatePriceAddOns(false);
     }
   };
@@ -29,7 +41,7 @@ function ToggleBilling({ setBilling, billing }: ToggleBillingProps) {
         </span>
         <input
           checked={billing === "Yearly" ? true : false}
-          onChange={(e) => onBilling(e)}
+          onChange={(e) => onChangeBilling(e)}
           type="checkbox"
           className="peer sr-only"
           id="billing"
