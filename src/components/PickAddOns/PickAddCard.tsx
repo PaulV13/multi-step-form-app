@@ -14,8 +14,6 @@ function PickAddCard({
   const addPickAddOn = usePickAddOns((state) => state.setAddOns);
   const deleteAddOn = usePickAddOns((state) => state.deleteAddOns);
 
-  const handleChecked = () => {};
-
   const pickAddOnSelected = () => {
     const newAddOns: AddOns = {
       id: id,
@@ -39,7 +37,6 @@ function PickAddCard({
       onClick={pickAddOnSelected}
     >
       <input
-        onClick={handleChecked}
         id={id.toString()}
         type="checkbox"
         checked={selected}

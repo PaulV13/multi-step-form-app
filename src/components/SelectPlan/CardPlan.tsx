@@ -23,7 +23,7 @@ function CardPlan({ plan }: { plan: CardPlanType }) {
   return (
     <div
       onClick={() => onSelectPlan(plan)}
-      className={`flex gap-3 ${
+      className={`flex cursor-pointer gap-3 ${
         selectedPlan.id == id
           ? "border-blue-800 bg-blue-50"
           : "border-gray-300 bg-transparent"
