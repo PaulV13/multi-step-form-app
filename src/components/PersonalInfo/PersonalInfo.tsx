@@ -11,18 +11,18 @@ function PersonalInfo() {
 
   return (
     <section className="flex flex-col gap-2">
-      <h2 className="text-3xl font-bold my-1">Personal info</h2>
-      <p className="text-gray-400 text-sm my-1">
+      <h2 className="my-1 text-3xl font-bold">Personal info</h2>
+      <p className="my-1 text-sm text-gray-400">
         Please provide your name, email address, and phone number.
       </p>
 
       <form className="flex flex-col">
-        <label className="font-semibold text-sm mb-2" htmlFor="name">
+        <label className="mb-2 text-sm font-semibold" htmlFor="name">
           Name
         </label>
         <input
           onChange={(e) => updateName(e.currentTarget.value)}
-          className="pointer border border-gray-200 rounded-md p-2 mb-4 font-semibold text-sm"
+          className="pointer mb-4 rounded-md border border-gray-200 p-2 text-sm font-semibold"
           type="text"
           id="name"
           name="name"
@@ -30,12 +30,12 @@ function PersonalInfo() {
           autoComplete="given-name"
         />
 
-        <label className="font-semibold text-sm mb-2" htmlFor="email">
+        <label className="mb-2 text-sm font-semibold" htmlFor="email">
           Email Address
         </label>
         <input
           onChange={(e) => updateEmail(e.currentTarget.value)}
-          className="pointer border border-gray-200 rounded-md p-2 mb-4 font-semibold text-sm"
+          className="pointer mb-4 rounded-md border border-gray-200 p-2 text-sm font-semibold"
           type="email"
           id="email"
           name="email"
@@ -43,12 +43,12 @@ function PersonalInfo() {
           autoComplete="email"
         />
 
-        <label className="font-semibold text-sm mb-2" htmlFor="phone">
+        <label className="mb-2 text-sm font-semibold" htmlFor="phone">
           Phone Number
         </label>
         <input
           onChange={(e) => updatePhone(e.currentTarget.value)}
-          className="pointer border border-gray-200 rounded-md p-2 mb-4 font-semibold text-sm"
+          className="pointer mb-4 rounded-md border border-gray-200 p-2 text-sm font-semibold"
           type="tel"
           id="phone"
           name="phone"

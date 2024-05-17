@@ -33,7 +33,7 @@ function PickAddCard({
 
   return (
     <div
-      className={`flex justify-between items-center gap-4 border border-blue-900 rounded-md p-2 ${
+      className={`flex items-center justify-between gap-4 rounded-md border border-blue-900 p-2 ${
         selected ? "bg-blue-50" : "bg-transparent"
       } cursor-pointer md:p-4`}
       onClick={pickAddOnSelected}
@@ -44,13 +44,13 @@ function PickAddCard({
         type="checkbox"
         checked={selected}
         readOnly
-        className="z-20 w-4 h-4 cursor-pointer text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        className="z-20 h-4 w-4 cursor-pointer rounded border-gray-300 bg-gray-100 text-blue-600 focus:ring-2 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:ring-offset-gray-800 dark:focus:ring-blue-600"
       />
       <div className="flex-1">
         <h3 className="font-bold text-blue-950">{name}</h3>
-        <p className="text-gray-400 text-xs">{description}</p>
+        <p className="text-xs text-gray-400">{description}</p>
       </div>
-      <p className="text-purple-800 font-semibold text-xs">
+      <p className="text-xs font-semibold text-purple-800">
         +${billingPlan === "Monthly" ? price : price * 10}
         {billingPlan === "Monthly" ? "/mo" : "/yr"}
       </p>

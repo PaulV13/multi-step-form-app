@@ -33,8 +33,8 @@ function SelectPlan() {
     <>
       <section className="flex flex-col gap-4 md:gap-8">
         <div>
-          <h2 className="font-bold text-blue-950 text-3xl">Select your plan</h2>
-          <p className="text-gray-400 my-1">
+          <h2 className="text-3xl font-bold text-blue-950">Select your plan</h2>
+          <p className="my-1 text-gray-400">
             You have the option of monthly or yearly billing.
           </p>
         </div>

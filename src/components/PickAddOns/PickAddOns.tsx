@@ -7,7 +7,7 @@ function PickAddOns() {
 
   return (
     <section className="flex flex-col gap-3 md:mx-8">
-      <h2 className="font-bold text-blue-950 text-2xl">Pick add-ons</h2>
+      <h2 className="text-2xl font-bold text-blue-950">Pick add-ons</h2>
       <p className="text-gray-400">
         Add-ons help enhance your gaming expirience.
       </p>
@@ -17,7 +17,7 @@ function PickAddOns() {
             key={addon.id}
             addOns={addon}
             selected={selectedAddons.some(
-              (selected) => selected.id === addon.id
+              (selected) => selected.id === addon.id,
             )}
           />
         ))}

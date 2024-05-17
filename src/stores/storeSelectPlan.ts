@@ -41,5 +41,5 @@ export const useSelectPlan = create<StateSelectPlan & ActionsSelectPlan>(
     billingPlan: "Monthly",
     setSelectedPlan: (plan) => set(() => ({ selectedPlan: plan })),
     setBillingPlan: (billing) => set(() => ({ billingPlan: billing })),
-  })
+  }),
 );

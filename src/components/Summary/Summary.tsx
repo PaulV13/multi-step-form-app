@@ -13,27 +13,27 @@ function Summary() {
 
   const total = selectedAddOns.reduce(
     (acc, addOn) => acc + addOn.price,
-    plan.price
+    plan.price,
   );
 
   useEffect(() => setTotal(total), [total, setTotal]);
 
   return (
     <section className="flex flex-col gap-4">
-      <h2 className="font-bold text-blue-950 text-3xl">Finishing up</h2>
+      <h2 className="text-3xl font-bold text-blue-950">Finishing up</h2>
       <p className="text-gray-400">
         Double-check everything looks OK before confirming.
       </p>
 
       <section className="flex flex-col rounded-md bg-blue-50 p-4">
-        <div className="flex justify-between items-center px-4">
+        <div className="flex items-center justify-between px-4">
           <div>
             <h3 className="font-bold text-blue-900">
               {plan.title} ({billing})
             </h3>
             <p
               onClick={() => setStepOption(2)}
-              className="text-gray-400 hover:text-purple-400 underline cursor-pointer"
+              className="cursor-pointer text-gray-400 underline hover:text-purple-400"
             >
               Change
             </p>
@@ -43,15 +43,15 @@ function Summary() {
             {billing === "Monthly" ? "/mo" : "/yr"}
           </p>
         </div>
-        <hr className="border-t border-gray-200 mx-4 my-4" />
+        <hr className="mx-4 my-4 border-t border-gray-200" />
         <div className="flex flex-col gap-2">
           {selectedAddOns.map((addOn) => (
             <div
               key={addOn.id}
-              className="flex justify-between items-center px-4 "
+              className="flex items-center justify-between px-4 "
             >
               <h3 className="text-gray-400">{addOn.name}</h3>
-              <p className="text-blue-900 font-semibold">
+              <p className="font-semibold text-blue-900">
                 +${addOn.price} {billing === "Monthly" ? "/mo" : "/yr"}
               </p>
             </div>
@@ -59,9 +59,9 @@ function Summary() {
         </div>
       </section>
 
-      <section className="flex justify-between gap-4 mx-8">
+      <section className="mx-8 flex justify-between gap-4">
         <h3 className="text-gray-400">Total (per month)</h3>
-        <p className="text-blue-700 font-bold">
+        <p className="font-bold text-blue-700">
           +${total}
           {billing === "Monthly" ? "/mo" : "/yr"}
         </p>

@@ -9,7 +9,7 @@ function Sidebar({
   steps: SidebarOptionType[];
 }) {
   return (
-    <section className="flex gap-4 p-8 justify-center md:flex-col md:bg-[url('./src/assets/images/bg-sidebar-desktop.svg')] md:bg-cover md:bg-center md:w-[274px] md:justify-start md:rounded-md">
+    <section className="flex justify-center gap-4 p-8 md:w-[274px] md:flex-col md:justify-start md:rounded-md md:bg-[url('./src/assets/images/bg-sidebar-desktop.svg')] md:bg-cover md:bg-center">
       {steps.map((step) => (
         <SidebarOption
           key={step.number}

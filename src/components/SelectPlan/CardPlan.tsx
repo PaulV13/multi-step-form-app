@@ -12,14 +12,14 @@ function CardPlan({ plan }: { plan: CardPlanType }) {
       onClick={() => setSelectedPlan(plan)}
       className={`flex gap-3 ${
         selectedPlan.id == id
-          ? "bg-blue-50 border-blue-800"
-          : "bg-transparent border-gray-300"
-      } p-2 border rounded-md md:flex-col md:flex-1 md:p-4 md:gap-8`}
+          ? "border-blue-800 bg-blue-50"
+          : "border-gray-300 bg-transparent"
+      } rounded-md border p-2 md:flex-1 md:flex-col md:gap-8 md:p-4`}
     >
       <img src={logo} className="md:w-[32px]" />
 
       <div>
-        <h2 className="text-blue-900 font-bold">{title}</h2>
+        <h2 className="font-bold text-blue-900">{title}</h2>
         <p className="text-gray-400">
           ${billing === "Monthly" ? price + "/mo" : price * 10 + "/yr"}
         </p>

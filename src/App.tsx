@@ -60,20 +60,20 @@ function App() {
   };
 
   return (
-    <div className="w-screen h-screen bg-slate-400 md:flex md:justify-center md:items-center">
+    <div className="h-screen w-screen bg-slate-400 md:flex md:items-center md:justify-center">
       <img
         src={bgMobile}
         alt="Check mark"
-        className="absolute w-full top-0 z-10 md:hidden"
+        className="absolute top-0 z-10 w-full md:hidden"
       />
-      <section className="relative h-full z-20 md:flex md:bg-white md:rounded-md md:p-4 md:h-[580px] md:w-[60%] md:max-w-[860px]">
+      <section className="relative z-20 h-full md:flex md:h-[580px] md:w-[60%] md:max-w-[860px] md:rounded-md md:bg-white md:p-4">
         <Sidebar selectedStepOption={selectedStepOption} steps={steps} />
         <div
-          className={`rounded-md bg-white py-6 px-6 mx-4 md:flex-1 md:flex md:flex-col ${
+          className={`mx-4 rounded-md bg-white px-6 py-6 md:flex md:flex-1 md:flex-col ${
             confirm ? "justify-center" : "justify-between"
           }`}
         >
-          <div className="flex flex-col bg-white rounded-md">
+          <div className="flex flex-col rounded-md bg-white">
             {confirm ? (
               <Confirm checkMark={checkMark} />
             ) : (
@@ -81,9 +81,9 @@ function App() {
             )}
           </div>
           {confirm ? null : (
-            <footer className="absolute bottom-0 left-0 w-full flex justify-between p-4 bg-white md:relative md:p-0">
+            <footer className="absolute bottom-0 left-0 flex w-full justify-between bg-white p-4 md:relative md:p-0">
               <button
-                className={`w-24 px-4 py-2 font-bold text-gray-400 hover:text-blue-800 text-sm ${
+                className={`w-24 px-4 py-2 text-sm font-bold text-gray-400 hover:text-blue-800 ${
                   selectedStepOption > 1 ? "visible" : "invisible"
                 }`}
                 onClick={handleBackStep}
@@ -92,14 +92,14 @@ function App() {
               </button>
               {selectedStepOption === steps.length ? (
                 <button
-                  className="w-24 px-4 py-2 bg-blue-700 hover:bg-purple-500 rounded-md text-gray-200 text-sm"
+                  className="w-24 rounded-md bg-blue-700 px-4 py-2 text-sm text-gray-200 hover:bg-purple-500"
                   onClick={handleConfirm}
                 >
                   Confirm
                 </button>
               ) : (
                 <button
-                  className="w-24 px-4 py-2 bg-blue-950 hover:bg-blue-800 rounded-md text-gray-200 text-sm"
+                  className="w-24 rounded-md bg-blue-950 px-4 py-2 text-sm text-gray-200 hover:bg-blue-800"
                   onClick={handleNextStep}
                 >
                   Next Step

@@ -20,5 +20,5 @@ export const usePersonalInfo = create<StatePersonalInfo & ActionsPersonalInfo>(
     updateName: (name: string) => set(() => ({ name })),
     updateEmail: (email: string) => set(() => ({ email })),
     updatePhone: (phone: string) => set(() => ({ phone })),
-  })
+  }),
 );

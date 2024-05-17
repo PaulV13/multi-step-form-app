@@ -48,7 +48,7 @@ export const usePickAddOns = create<StatePickAddOns & ActionsPickAddOns>(
     deleteAddOns: (payload: AddOns) =>
       set((state) => ({
         selectedAddOns: state.selectedAddOns.filter(
-          (addOn) => addOn.id !== payload.id
+          (addOn) => addOn.id !== payload.id,
         ),
       })),
     updatePriceAddOns: (checked: boolean) =>
@@ -58,5 +58,5 @@ export const usePickAddOns = create<StatePickAddOns & ActionsPickAddOns>(
           price: checked ? addOn.price * 10 : addOn.price / 10,
         })),
       })),
-  })
+  }),
 );
